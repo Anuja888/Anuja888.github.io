@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anuja Kuchipudi — Software Engineer</title>
+<meta name="description" content="Portfolio of Anuja Kuchipudi, a B.Tech IT student building systems that stay correct under pressure.">
+<style>
+:root{
+  --bg:#0a0a0b; --surface:#111113; --text:#f2f2f0; --muted:#8a8a8f;
+  --accent:#d4ff6a; --line:#232326; --mono:'SF Mono',monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){ --bg:#faf9f6; --surface:#f0efe9; --text:#111; --muted:#6b6b6b; --line:#ddd; --accent:#4a6b1f; }
+}
+:root[data-theme="dark"]{ --bg:#0a0a0b; --surface:#111113; --text:#f2f2f0; --muted:#8a8a8f; --line:#232326; --accent:#d4ff6a; }
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  background:var(--bg); color:var(--text); font-family:-apple-system,"Inter",sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:color-mix(in srgb, var(--bg) 85%, transparent);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1100px;margin:0 auto;}
+.logo{font-weight:700;font-size:1.1rem;letter-spacing:-0.02em;}
+.navlinks{display:flex;gap:28px;font-size:0.82rem;color:var(--muted);}
+.navlinks a:hover{color:var(--text);}
+@media(max-width:640px){.navlinks{gap:14px;font-size:0.72rem;}}
+
+.hero{padding:clamp(60px,12vw,140px) 24px clamp(40px,8vw,80px);max-width:1100px;margin:0 auto;}
+.tag{font-size:0.75rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;display:block;}
+.headline{font-size:clamp(2.4rem,7vw,5rem);font-weight:700;line-height:1.02;letter-spacing:-0.03em;margin-bottom:24px;}
+.headline em{font-style:italic;color:var(--accent);font-weight:500;}
+.intro{font-size:clamp(1rem,1.8vw,1.25rem);color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:32px;}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+.btn{padding:12px 22px;border:1px solid var(--line);border-radius:100px;font-size:0.88rem;transition:all .2s;}
+.btn.primary{background:var(--accent);color:#0a0a0b;border-color:var(--accent);font-weight:600;}
+.btn:hover{border-color:var(--text);}
+.btn.primary:hover{opacity:0.85;}
+
+.marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:18px 0;background:var(--surface);}
+.marquee{display:inline-block;animation:scroll 32s linear infinite;font-size:0.85rem;color:var(--muted);}
+.marquee span{margin:0 28px;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media (prefers-reduced-motion: reduce){.marquee{animation:none;}}
+
+section{padding:clamp(50px,9vw,100px) 24px;max-width:1100px;margin:0 auto;}
+.label{font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
+.big-statement{font-size:clamp(1.5rem,4vw,2.4rem);font-weight:600;line-height:1.25;max-width:780px;letter-spacing:-0.01em;}
+.big-statement em{font-style:italic;color:var(--accent);}
+.sub{color:var(--muted);max-width:560px;margin-top:20px;line-height:1.6;}
+
+.project{display:grid;grid-template-columns:60px 1fr;gap:20px;padding:30px 0;border-top:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .5s, transform .5s;}
+.project.show{opacity:1;transform:translateY(0);}
+.project:last-child{border-bottom:1px solid var(--line);}
+.pnum{font-family:var(--mono);color:var(--muted);font-size:0.85rem;padding-top:4px;}
+.pmeta{font-size:0.72rem;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;}
+.ptitle{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;margin-bottom:10px;}
+.pdesc{color:var(--muted);line-height:1.6;max-width:620px;margin-bottom:14px;font-size:0.95rem;}
+.ptags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.ptag{font-size:0.7rem;color:var(--muted);border:1px solid var(--line);padding:3px 10px;border-radius:100px;}
+.plinks{display:flex;gap:16px;font-size:0.82rem;}
+.plinks a{border-bottom:1px solid var(--line);}
+.plinks a:hover{border-color:var(--text);}
+
+.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px;}
+@media(max-width:768px){.focus-grid{grid-template-columns:1fr;}}
+.focus-item{border-top:1px solid var(--line);padding-top:18px;}
+.focus-num{font-family:var(--mono);color:var(--accent);font-size:0.8rem;}
+.focus-item h3{font-size:1.1rem;margin:10px 0 8px;}
+.focus-item p{color:var(--muted);font-size:0.88rem;line-height:1.5;}
+
+.achv{font-size:0.82rem;color:var(--accent);margin-bottom:28px;}
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px;}
+@media(max-width:640px){.stack-grid{grid-template-columns:1fr;}}
+.course-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+@media(max-width:640px){.course-grid{grid-template-columns:1fr;}}
+.stack-cat h4{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+.stack-cat p{font-size:0.92rem;line-height:1.7;}
+
+.contact-cta{text-align:left;}
+.contact-cta a.email{font-size:clamp(1.6rem,5vw,3rem);font-weight:700;display:inline-block;margin:18px 0;border-bottom:2px solid var(--accent);}
+.social-row{display:flex;gap:24px;margin-top:20px;font-size:0.9rem;color:var(--muted);}
+.social-row a:hover{color:var(--text);}
+
+footer{border-top:1px solid var(--line);padding:30px 24px;padding-bottom:calc(30px + env(safe-area-inset-bottom,0px));}
+.foot-wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;color:var(--muted);font-size:0.78rem;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+  <a class="logo" href="#top">AK°</a>
+  <div class="navlinks">
+    <a href="#work">Selected Work</a>
+    <a href="#stack">Tech Stack</a>
+    <a href="#about">Profile</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+</header>
+
+<div id="top" class="hero">
+  <span class="tag">● Open to Software Engineering internships</span>
+  <p style="font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;">Anuja Kuchipudi</p>
+  <p style="color:var(--muted);font-size:0.95rem;margin-bottom:22px;">Software Engineer · B.Tech IT, Vasavi College of Engineering</p>
+  <h1 class="headline">Systems that stay<br><em>correct</em> under pressure.</h1>
+  <p class="intro">I'm Anuja — a B.Tech Information Technology undergraduate at Vasavi College of Engineering, building full-stack and AI-assisted systems where I care more about what happens at the edge cases than what the demo looks like on a good day.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="#work">See the work</a>
+    <a class="btn" href="mailto:kuchipudianuja3@gmail.com">Get in touch</a>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee" id="marqueeTrack">
+    <span>PYTHON &amp; FASTAPI ✦</span><span>POSTGRESQL &amp; CONCURRENCY ✦</span><span>REACT &amp; TYPESCRIPT ✦</span><span>SCIKIT-LEARN ✦</span><span>EMBEDDED SYSTEMS (ESP32) ✦</span><span>NODE.JS &amp; EXPRESS ✦</span><span>SERVICENOW ✦</span><span>DOCKER ✦</span>
+    <span>PYTHON &amp; FASTAPI ✦</span><span>POSTGRESQL &amp; CONCURRENCY ✦</span><span>REACT &amp; TYPESCRIPT ✦</span><span>SCIKIT-LEARN ✦</span><span>EMBEDDED SYSTEMS (ESP32) ✦</span><span>NODE.JS &amp; EXPRESS ✦</span><span>SERVICENOW ✦</span><span>DOCKER ✦</span>
+  </div>
+</div>
+
+<section id="about">
+  <p class="label">/ a quick read</p>
+  <p class="big-statement">I like the point where a <em>race condition</em> gets found before it finds a user.</p>
+  <p class="sub">From the database constraint underneath to the interface on top, I care about correctness as much as polish. ServiceNow CSA certified, 300+ DSA problems solved, Branch Topper — but the projects below are where the actual engineering happened.</p>
+</section>
+
+<section id="work">
+  <p class="label">/ selected work</p>
+  <p class="big-statement" style="margin-bottom:10px;">Things I've <em>put in motion.</em></p>
+
+  <div class="project" data-n="1"><div class="pnum">01</div><div>
+    <p class="pmeta">2026 — Concurrency & Systems</p>
+    <h3 class="ptitle">LedgerLock</h3>
+    <p class="pdesc">An idempotent transaction manager that stays correct under retries. Duplicate requests sharing an idempotency key return the original result instead of double-charging, enforced by a unique DB constraint; row-level locking under READ COMMITTED isolation stops lost updates when concurrent requests hit the same account. Verified with a concurrency test harness: 100 simultaneous duplicate requests processed exactly once, 50 concurrent distinct-key requests produced zero lost balance updates.</p>
+    <div class="ptags"><span class="ptag">FastAPI</span><span class="ptag">PostgreSQL</span><span class="ptag">React</span></div>
+    <div class="plinks"><a href="https://idempotent-transaction-manager.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/Idempotent-Transaction-Manager" target="_blank">GitHub →</a></div>
+  </div></div>
+
+  <div class="project" data-n="2"><div class="pnum">02</div><div>
+    <p class="pmeta">2026 — Razorpay Buildathon</p>
+    <h3 class="ptitle">RENEW</h3>
+    <p class="pdesc">A deterministic recovery-operations ledger for failed recurring payments — diagnose → score → decide → audit. A logistic-regression scorer flags recoverable segments; every actual decision runs through unit-tested deterministic rules, not the LLM, which I deliberately scoped to drafting outreach copy only. Found a batch that looked profitable in aggregate but was break-even on one structurally unrecoverable segment, and fixed it with a recoverability-threshold rule.</p>
+    <div class="ptags"><span class="ptag">FastAPI</span><span class="ptag">scikit-learn</span><span class="ptag">React / Vite</span></div>
+    <div class="plinks"><a href="https://recovery-operations-ledger-razorpay.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/Recovery_Operations_Ledger_RAZORPAY" target="_blank">GitHub →</a></div>
+  </div></div>
+
+  <div class="project" data-n="3"><div class="pnum">03</div><div>
+    <p class="pmeta">2026 — PS #26117, MRPL · Smart Automation</p>
+    <h3 class="ptitle">Vajra — Sovereign Agentic Workbench</h3>
+    <p class="pdesc">An on-premise agentic AI workbench for confidential industrial work, built on open-weight multimodal LLMs with no external calls. Demonstrates automatic model selection across task types, an end-to-end agentic workflow (scanned inspection report → approval note), a sandboxed coding task, and a visible network monitor proving data never leaves the premises.</p>
+    <div class="ptags"><span class="ptag">React / TS</span><span class="ptag">Local LLMs</span><span class="ptag">Agentic Workflows</span></div>
+    <div class="plinks"><a href="https://vajra-sovereign-agentic-workbench-k.vercel.app" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/Vajra-Sovereign-Agentic-Workbench" target="_blank">GitHub →</a></div>
+  </div></div>
+
+  <div class="project" data-n="4"><div class="pnum">04</div><div>
+    <p class="pmeta">2026 — Smart India Hackathon, PS #26124 (Bharat Electronics Ltd.)</p>
+    <h3 class="ptitle">NAVIK</h3>
+    <p class="pdesc">An AI-powered urban intelligence platform built on public transport fleet data for Hyderabad — a live command center for fleet tracking, incident reporting, analytics, and reports, aimed at turning raw transit telemetry into decisions a city operations team can act on.</p>
+    <div class="ptags"><span class="ptag">React</span><span class="ptag">AI Agents</span><span class="ptag">Dashboards</span></div>
+    <div class="plinks"><a href="https://navik-urban-intelligence-platform.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/NAVIK---Urban-Intelligence-Platform" target="_blank">GitHub →</a></div>
+  </div></div>
+
+  <div class="project" data-n="5"><div class="pnum">05</div><div>
+    <p class="pmeta">2025 — 1st Place, CBIT Ideathon 4.0 (15+ colleges)</p>
+    <h3 class="ptitle">Sakhi Patch</h3>
+    <p class="pdesc">A low-cost wearable (ESP32 + temperature sensor) for early PCOS risk screening, built with a team of five in a 48-hour hackathon. It samples basal body temperature every two hours to build a time-series across menstrual cycles, flags irregular ovulation patterns as a screening signal — not a diagnosis — and needs no smartphone, built for low-connectivity rural areas. Integrated with ASHA community health workers for distribution and referral.</p>
+    <div class="ptags"><span class="ptag">ESP32</span><span class="ptag">Python</span><span class="ptag">AES-256</span></div>
+    <div class="plinks"><a href="https://sakhi-patch.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/sakhi-patch" target="_blank">GitHub →</a></div>
+  </div></div>
+
+  <div class="project" data-n="6"><div class="pnum">06</div><div>
+    <p class="pmeta">2026 — Student Support Platform</p>
+    <h3 class="ptitle">CampusReach</h3>
+    <p class="pdesc">A ServiceNow-style student support portal for logging and tracking campus service requests end-to-end, built to bring enterprise workflow-management patterns to a college-scale support desk.</p>
+    <div class="ptags"><span class="ptag">ServiceNow-style</span><span class="ptag">Workflow Automation</span></div>
+    <div class="plinks"><a href="https://campus-reach-service-now.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/CampusReach_ServiceNow" target="_blank">GitHub →</a></div>
+  </div></div>
+
+</section>
+
+<section id="coursework">
+  <p class="label">/ earlier coursework</p>
+  <p class="big-statement" style="font-size:clamp(1.2rem,3vw,1.7rem);margin-bottom:24px;">2nd-year MERN &amp; DAA projects.</p>
+  <div class="course-grid">
+    <div style="border-top:1px solid var(--line);padding-top:16px;">
+      <p class="pmeta">2025 — MERN Stack Project</p>
+      <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:8px;">HackTrack</h4>
+      <p class="pdesc" style="font-size:0.88rem;">A role-based event management platform with JWT authentication across 3 permission tiers (admin, organizer, participant), with automated certificate generation and email notifications on event completion.</p>
+      <div class="ptags"><span class="ptag">React</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div>
+      <div class="plinks"><a href="https://hack-trackk.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/Hack_Track" target="_blank">GitHub →</a></div>
+    </div>
+    <div style="border-top:1px solid var(--line);padding-top:16px;">
+      <p class="pmeta">2025 — DAA / Algorithms Project</p>
+      <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:8px;">Stubble Scheduler</h4>
+      <p class="pdesc" style="font-size:0.88rem;">A scheduling system to coordinate and stagger permitted crop stubble-burning windows across farms, aimed at reducing simultaneous large-scale burning and the air-quality spikes that follow it.</p>
+      <div class="ptags"><span class="ptag">Scheduling</span><span class="ptag">Web App</span></div>
+      <div class="plinks"><a href="https://crop-stubble-burning-schedular.vercel.app/" target="_blank">Live Demo →</a><a href="https://github.com/Anuja888/Crop-Stubble-Burning-Schedular" target="_blank">GitHub →</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="label">/ focus</p>
+  <p class="big-statement">Useful, by <em>design.</em></p>
+  <div class="focus-grid">
+    <div class="focus-item"><div class="focus-num">01</div><h3>Backend & Systems</h3><p>APIs, transactional correctness, concurrency control, and data persistence that hold up under real load.</p></div>
+    <div class="focus-item"><div class="focus-num">02</div><h3>Full-Stack Product Engineering</h3><p>Coherent frontend and backend implementations, from a wearable's firmware to a React dashboard.</p></div>
+    <div class="focus-item"><div class="focus-num">03</div><h3>AI-Integrated Software</h3><p>Model APIs and agentic workflows used deliberately — and deliberately kept out of decisions they shouldn't make.</p></div>
+  </div>
+</section>
+
+<section id="stack">
+  <p class="label">/ technical stack</p>
+  <p class="big-statement">Engineering <em>capabilities.</em></p>
+  <p class="achv">1st Place — CBIT Ideathon 4.0 (15+ colleges) · ServiceNow Certified System Administrator · NPTEL Java 97%</p>
+  <div class="stack-grid">
+    <div class="stack-cat"><h4>Languages</h4><p>Java · Python · C++ · JavaScript / TypeScript · SQL · C</p></div>
+    <div class="stack-cat"><h4>Frontend</h4><p>HTML · CSS · React · Vite · Tailwind</p></div>
+    <div class="stack-cat"><h4>Backend & Systems</h4><p>FastAPI · SQLAlchemy · Node.js · Express · REST APIs · JWT Auth</p></div>
+    <div class="stack-cat"><h4>Databases</h4><p>PostgreSQL · SQLite</p></div>
+    <div class="stack-cat"><h4>AI / ML</h4><p>scikit-learn · LLM API integration (deliberately scoped)</p></div>
+    <div class="stack-cat"><h4>Tools</h4><p>Git · GitHub · Docker · Postman</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact-cta">
+  <p class="label">/ start a conversation</p>
+  <p class="big-statement">Let's make <em>something count.</em></p>
+  <a class="email" href="mailto:kuchipudianuja3@gmail.com">kuchipudianuja3@gmail.com</a>
+  <div class="social-row">
+    <a href="https://github.com/Anuja888" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/anuja-kuchipudi-731657317" target="_blank">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-wrap">
+    <span>© 2026 Anuja Kuchipudi</span>
+    <span>Hyderabad, India</span>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+},{threshold:0.15});
+document.querySelectorAll('.project').forEach(p=>io.observe(p));
+</script>
+
+</body>
+</html>
